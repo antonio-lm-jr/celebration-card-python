@@ -43,5 +43,6 @@
 
 ## Importante conhecer
 
--   [pypi](https://pypi.org/)
--   [make](https://makefiletutorial.com/)
+-   [Pypi](https://pypi.org/)
+-   [Github actions](https://github.com/marketplace/actions)
+-   [Make](https://makefiletutorial.com/)
