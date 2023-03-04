@@ -4,6 +4,7 @@
 
 -   [pyenv](https://github.com/pyenv/pyenv)
 -   [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
+-   [make](https://www.google.com/search?q=install+make)
 
 2. Garanta que você têm alguns módulos instalados para que o python funcione, alguns deles...
 
@@ -34,6 +35,13 @@
 > make dev-dependencies
 ```
 
+5. Execute o comando
+
+```
+> make run
+```
+
 ## Importante conhecer
 
 -   [pypi](https://pypi.org/)
+-   [make](https://makefiletutorial.com/)
