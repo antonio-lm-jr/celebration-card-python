@@ -1,0 +1,36 @@
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**/*.md"
+
+name: Main workflow
+
+jobs:
+  ci:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version-file: .python-version
+
+      - name: Python cache
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: /opt/hostedtoolcache/Python/
+          key: poetry-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: poetry-
+
+      - name: Install dependencies
+        run: make dev-dependencies
+        env:
+          POETRY_VIRTUALENVS_CREATE: false
+          PYTHONPATH: .
+
+      - name: Test integration
+        run: make test-cov
