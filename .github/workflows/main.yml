@@ -32,5 +32,8 @@ jobs:
           POETRY_VIRTUALENVS_CREATE: false
           PYTHONPATH: .
 
+      - name: Linter
+        run: make lint
+
       - name: Test integration
         run: make test-cov
