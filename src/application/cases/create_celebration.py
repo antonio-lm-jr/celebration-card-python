@@ -6,7 +6,9 @@ class CreateCelebrationUseCase:
     def __init__(self, repository):
         self.repository = repository
 
-    def create_celebration(self, dto: CreateCelebrationDTO) -> CelebrationEntity:
+    def create_celebration(
+        self, dto: CreateCelebrationDTO
+    ) -> CelebrationEntity:
         celebration = CelebrationEntity(
             of=dto.of, description=dto.description, to=dto.to
         )

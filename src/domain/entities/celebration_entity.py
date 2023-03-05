@@ -9,5 +9,5 @@ class CelebrationEntity(BaseModel):
     of: str = Field(..., min_length=3, max_length=100)
     to: str = Field(..., min_length=3, max_length=100)
     description: str = Field(..., min_length=1, max_length=400)
-    created_at: datetime | None = Field(default_factory=datetime.now)
-    updated_at: datetime | None = Field(default_factory=datetime.now)
+    created_at: datetime = Field(default_factory=datetime.now)
+    updated_at: datetime = Field(default_factory=datetime.now)
