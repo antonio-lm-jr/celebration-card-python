@@ -1,1 +1,11 @@
+# Python
 __pycache__
+
+# Tests
+htmlcov/
+.pytest_cache/
+.coverage
+coverage.*
+
+# Others
+db.json
