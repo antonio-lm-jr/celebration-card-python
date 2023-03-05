@@ -19,26 +19,26 @@ run:
 
 # Lint
 _flake8:
-	@flake8 --show-source .
+	@flake8 --show-source src/
 
 _isort:
-	@isort --diff --check-only src/
+	@isort --check-only src/
 
 _black:
-	@black --check src/
+	@black --diff --check src/
 
 _isort-fix:
-	@isort src/
+	@isort src/ tests/
 
-_black_fix:
-	@black src/
+_black-fix:
+	@black src/ tests/
 
 _mypy:
-#	@mypy src/
+	@mypy src/
 
-lint: _isort _black _mypy
-format-code: _isort-fix _black_fix
+lint: _flake8 _isort _black _mypy
+format-code: _isort-fix _black-fix
 
 # Test
 test-cov: clean
-	@pytest -v tests/
+	@pytest tests/ --cov src
