@@ -11,7 +11,8 @@ class GetCelebrationUseCase:
     def get_celebration(self, id: str) -> CelebrationEntity:
         try:
             celebration_result = self.repository.get(id)
-        except Exception:
+        except Exception as error:
+            print(error)
             raise CelebrationNotFoundException("Celebration not found")
 
         return celebration_result

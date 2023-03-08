@@ -1,3 +1,11 @@
+## Projeto
+
+Criar uma API que possibilite criar cartão de datas comemorativas.
+
+## Objetivo
+
+Criar uma pequena API em python com fastapi para exercitar alguns aprendizados da linguagem.
+
 ## Configurando ambiente
 
 1. Instale as ferramentas

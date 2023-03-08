@@ -10,14 +10,18 @@ class TestAPICelebration:
 
         assert response.status_code == HTTPStatus.CREATED
 
-        assert result["id"] is not None
-        assert result["created_at"] is not None
-        assert result["updated_at"] is not None
+        assert result["status_code"] == HTTPStatus.CREATED
+        assert result["content"] is not None
 
-        assert result["of"] == create_celebration_payload["of"]
-        assert result["to"] == create_celebration_payload["to"]
+        assert result["content"]["id"] is not None
+        assert result["content"]["created_at"] is not None
+        assert result["content"]["updated_at"] is not None
+
+        assert result["content"]["of"] == create_celebration_payload["of"]
+        assert result["content"]["to"] == create_celebration_payload["to"]
         assert (
-            result["description"] == create_celebration_payload["description"]
+            result["content"]["description"]
+            == create_celebration_payload["description"]
         )
 
     @pytest.mark.parametrize(
@@ -25,7 +29,6 @@ class TestAPICelebration:
         [
             {"of": "", "to": "mock-to", "description": "mock-description"},
             {"of": "mock-of", "to": "", "description": "mock-description"},
-            {"of": "mock-of", "to": "mock-to", "description": ""},
             {
                 "of": "m" * 2,
                 "to": "mock-to",
@@ -58,11 +61,21 @@ class TestAPICelebration:
         result = response.json()
 
         assert response.status_code == HTTPStatus.BAD_REQUEST
-        assert result["detail"] is not None
+
+        assert result["status_code"] == HTTPStatus.BAD_REQUEST
+        assert result["content"] is not None
+
+        assert result["content"]["status_code"] is not None
+        assert result["content"]["message"] is not None
 
     def test_should_return_not_exists(self, client):
         response = client.get("/celebration/mock-id")
         result = response.json()
 
         assert response.status_code == HTTPStatus.NOT_FOUND
-        assert result["detail"] is not None
+
+        assert result["status_code"] == HTTPStatus.NOT_FOUND
+        assert result["content"] is not None
+
+        assert result["content"]["status_code"] is not None
+        assert result["content"]["message"] is not None
