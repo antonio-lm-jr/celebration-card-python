@@ -11,3 +11,6 @@ class TinyDBConnAdapter:
     def get(self, id: str) -> dict:
         celebration_result = self.db.get(where("id") == id)
         return celebration_result
+
+    def delete(self, id: str):
+        self.db.remove(where("id") == id)

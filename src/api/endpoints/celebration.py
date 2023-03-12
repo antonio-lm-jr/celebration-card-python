@@ -1,7 +1,7 @@
 from http import HTTPStatus
 
 from dependency_injector.wiring import Provide, inject
-from fastapi import APIRouter
+from fastapi import APIRouter, Response
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 
@@ -73,3 +73,16 @@ async def get_celebration(
             internal_server_error(),
             status_code=HTTPStatus.INTERNAL_SERVER_ERROR,
         )
+
+
+@router.delete("/celebration/{celebration_id}")
+@inject
+async def delete_celebration(
+    celebration_id: str, use_case=Provide[UseCases.delete_celebration]
+):
+    use_case.delete_celebration(celebration_id)
+
+    return Response(
+        None,
+        status_code=HTTPStatus.NO_CONTENT,
+    )

@@ -7,3 +7,6 @@ class ConnInterface:
 
     def get(self, id: str):
         ...
+
+    def delete(self, id: str):
+        ...

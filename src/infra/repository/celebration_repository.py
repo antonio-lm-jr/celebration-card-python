@@ -14,3 +14,6 @@ class CelebrationRepository:
         celebration_result = self.conn.get(id)
         parsed = db_to_entity(celebration_result)
         return parsed
+
+    def delete(self, id: str):
+        self.conn.delete(id)

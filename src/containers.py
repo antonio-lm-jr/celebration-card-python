@@ -1,6 +1,7 @@
 from dependency_injector import containers, providers
 
 from src.application.cases.create_celebration import CreateCelebrationUseCase
+from src.application.cases.delete_celebration import DeleteCelebrationUseCase
 from src.application.cases.get_celebration import GetCelebrationUseCase
 from src.infra.repository.celebration_repository import CelebrationRepository
 from src.infra.repository.service.tinydb_adapter import TinyDBConnAdapter
@@ -23,4 +24,8 @@ class UseCases(containers.DeclarativeContainer):
 
     get_celebration = providers.Factory(
         GetCelebrationUseCase, repository=adapters.celebration_repository
+    )
+
+    delete_celebration = providers.Factory(
+        DeleteCelebrationUseCase, repository=adapters.celebration_repository
     )
