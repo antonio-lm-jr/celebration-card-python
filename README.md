@@ -49,6 +49,36 @@ Criar uma pequena API em python com fastapi para exercitar alguns aprendizados d
 > make run
 ```
 
+## Ambientes
+
+| Ambiente | Url                    |
+| -------- | ---------------------- |
+| dev      | http://localhost:3000/ |
+| homolog  |                        |
+| prod     |                        |
+
+## Recursos
+
+### Cadastro de card
+
+Faça uma socitiação `POST /celebration` com os dados abaixo
+
+```json
+{
+    "of": "João",
+    "to": "Maria",
+    "description": "Obrigado pelo feedback sobre a reunião"
+}
+```
+
+### Busca detalhes do card
+
+Faça uma socitiação `GET /celebration/{celebration_id}`
+
+### Deleta um card
+
+Faça uma socitiação `DELETE /celebration/{celebration_id}`
+
 ## Importante conhecer
 
 -   [Pypi](https://pypi.org/)
